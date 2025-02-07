@@ -27,4 +27,5 @@ RUN sed -i 's/w, h = self.font.getsize(label)/_, _, w, h = self.font.getbbox(lab
 RUN wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1so1UyzoTugUc0-7oFY6e65H5QsOq6sfw" -O spi_demo_yolov5l.pt
 
 # command to run
-ENTRYPOINT ["./venv/bin/python", "-u", "src/app.py"]
+# ENTRYPOINT ["./venv/bin/python", "-u", "src/app.py"]
+CMD ["gunicorn", "--workers", "4", "--bind", "0.0.0.0:8000", "src.app:app"]
