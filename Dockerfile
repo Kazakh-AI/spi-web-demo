@@ -22,7 +22,6 @@ RUN ./venv/bin/pip install -r requirements.txt
 
 # replace the deprecated line
 RUN sed -i 's/w, h = self.font.getsize(label)/_, _, w, h = self.font.getbbox(label)/g' venv/lib/python3.12/site-packages/yolov5/utils/plots.py
-RUN sed -i 's/w, h = self.font.getsize(label)/_, _, w, h = self.font.getbbox(label)/g' venv/lib/python3.11/site-packages/yolov5/utils/plots.py
 
 # download model weights
 RUN wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1so1UyzoTugUc0-7oFY6e65H5QsOq6sfw" -O spi_demo_yolov5l.pt
