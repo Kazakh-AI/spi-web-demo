@@ -11,6 +11,7 @@ from werkzeug.utils import secure_filename
 
 # computer vision
 from yolov5 import detect
+from yolov5model import *
 
 # init app
 app = Flask(__name__)
@@ -45,7 +46,7 @@ def index():
             file.save(upload_path)
 
             # process the image using YOLOv5
-            detect.run(weights='spi_demo_yolov5l.pt', source=upload_path, project=app.config['RESULT_FOLDER'], name='', exist_ok=True)
+            detect_save(model_path='spi_demo_yolov5l.pt', img_path=upload_path, save_dir=app.config['RESULT_FOLDER'])
 
             # return the result page with both images
             return render_template('index.html', original_image=filename, processed_image=filename)
@@ -55,7 +56,7 @@ def index():
 
 @app.route('/clear', methods=['POST'])
 def clear():
-    # Clear uploaded and result files
+    # clear uploaded and result files
     for folder in [app.config['UPLOAD_FOLDER'], app.config['RESULT_FOLDER']]:
         for file in os.listdir(folder):
             file_path = os.path.join(folder, file)
