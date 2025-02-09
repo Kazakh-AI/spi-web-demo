@@ -131,7 +131,7 @@ def detect_save(model_path: str, img_path: str, save_dir: str, no_exist_label: s
         cv2.putText(image, label, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 2, rgb2bgr(Colors.RED), 3, cv2.LINE_AA)
     
     # load model
-    model = YOLOv5Model(weights=model_path, max_det=1)
+    model = YOLOv5Model(weights=model_path, max_det=1, device='cpu')
     
     # predict
     image = cv2.imread(img_path)
