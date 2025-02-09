@@ -4,11 +4,9 @@
 import cv2
 import torch
 import yolov5
-import numpy as np
-from PIL import Image, ImageDraw, ImageFont
 
 # custom
-from auxiliary import *
+from .auxiliary import *
 
 
 def get_computation_device() -> str:

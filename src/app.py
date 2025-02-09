@@ -10,8 +10,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 from werkzeug.utils import secure_filename
 
 # computer vision
-from yolov5 import detect
-from yolov5model import *
+from .yolov5model import detect_save
 
 # init app
 app = Flask(__name__)
